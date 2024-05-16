@@ -2,9 +2,9 @@ class Solution {
     public boolean validateStackSequences(int[] pushed, int[] popped) {
         Stack<Integer> st=new Stack<>();
         int j=0;
-        for(int p:pushed){
-            st.push(p);
-            while(!st.empty() && j<popped.length && st.peek()==popped[j]){
+        for(int i:pushed){
+            st.push(i);
+            while(!st.empty() && popped[j]==st.peek() && j<popped.length ){
                 st.pop();
                 j++;
             }
