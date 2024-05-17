@@ -1,23 +1,22 @@
 class Solution {
     public int trap(int[] arr) {
         int n=arr.length;
-        int l=0,r=n-1,lmax=0,rmax=0,sum=0;
+        int l=0,r=n-1,leftmax=0,rightmax=0,sum=0;
         while(l<r){
-            if(arr[l]<=arr[r]){
-                if(arr[l]>=lmax){
-                    lmax=arr[l];
-                }else{
-                    sum+=lmax-arr[l];
-                }
+           if(arr[l]>leftmax){
+               leftmax=Math.max(leftmax,arr[l]);
+           }
+            if(arr[r]>rightmax){
+               rightmax=Math.max(rightmax,arr[r]);
+           }
+            if(leftmax<rightmax){
+                sum+=leftmax-arr[l];
                 l++;
             }else{
-                if(arr[r]>=rmax){
-                    rmax=arr[r];
-                }else{
-                    sum+=rmax-arr[r];
-                }
+                 sum+=rightmax-arr[r];
                 r--;
             }
+            
         }
         return sum;
     }
