@@ -1,36 +1,25 @@
 class Solution {
-    public static int largestRectangleArea(int[] height) {
-    if (height == null || height.length == 0) {
-        return 0;
-    }
-    int[] lessFromLeft = new int[height.length]; // idx of the first bar the left that is lower than current
-    int[] lessFromRight = new int[height.length]; // idx of the first bar the right that is lower than current
-    lessFromRight[height.length - 1] = height.length;
-    lessFromLeft[0] = -1;
-
-    for (int i = 1; i < height.length; i++) {
-        int p = i - 1;
-
-        while (p >= 0 && height[p] >= height[i]) {
-            p = lessFromLeft[p];
+    public int largestRectangleArea(int[] h) {
+        
+        int max = 0;
+        Stack<Integer> s = new Stack<>();
+        s.push(0);
+        
+        for (int i = 1; i <= h.length; i++) {
+            if (i == h.length || h[i] < h[i-1]) {
+                int newHeight = i == h.length ? 0 : h[i];
+                
+                while (!s.isEmpty() && h[s.peek()] > newHeight) {
+                    int rectHeight = s.pop();
+                    int startIx    = s.isEmpty() ? 0 : s.peek() + 1;
+                    int area       = h[rectHeight] * (i - startIx);
+                    max            = Math.max(max, area);
+                }
+            } else if (h[i] == h[i-1]) {
+                s.pop();
+            }
+            s.push(i);
         }
-        lessFromLeft[i] = p;
+        return max;
     }
-
-    for (int i = height.length - 2; i >= 0; i--) {
-        int p = i + 1;
-
-        while (p < height.length && height[p] >= height[i]) {
-            p = lessFromRight[p];
-        }
-        lessFromRight[i] = p;
-    }
-
-    int maxArea = 0;
-    for (int i = 0; i < height.length; i++) {
-        maxArea = Math.max(maxArea, height[i] * (lessFromRight[i] - lessFromLeft[i] - 1));
-    }
-
-    return maxArea;
-}
 }
