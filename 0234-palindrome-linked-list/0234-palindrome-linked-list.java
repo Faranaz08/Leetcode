@@ -9,38 +9,38 @@
  * }
  */
 class Solution {
-    public boolean isPalindrome(ListNode head) {
-         if (head == null || head.next == null) {
+    public boolean isPalindrome(ListNode head) {//1221 first mid then reverse then check 
+        if(head==null && head.next==null){
             return true;
+        
         }
-        ListNode slow=head,fast=head;
+        ListNode slow=head,fast=head;// mid
         while(fast.next!=null && fast.next.next!=null){
             slow=slow.next;
             fast=fast.next.next;
         }
         ListNode newhead=reverse(slow.next);
-        ListNode firstHead=head,secndHead=newhead;
-        while(secndHead != null){
-            if(firstHead.val != secndHead.val){
+        
+        //check valus
+        ListNode firsthead=head,sechead=newhead;
+        while(sechead!=null){
+            if(firsthead.val!=sechead.val){
                 reverse(newhead);
                 return false;
             }
-            firstHead=firstHead.next;
-            secndHead=secndHead.next;
+            sechead=sechead.next;
+            firsthead=firsthead.next;
         }
         reverse(newhead);
         return true;
     }
-    private ListNode reverse(ListNode head){
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode prev=null,curr=head;
+    public ListNode reverse(ListNode head){//FCP
+        ListNode front=head,curr=head,prev=null;
         while(curr!=null){
-            ListNode nextN=curr.next;
+            front=curr.next;
             curr.next=prev;
             prev=curr;
-            curr=nextN;
+            curr=front;
         }
         return prev;
     }
