@@ -11,11 +11,10 @@
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
        
-         //we have to creat new listnode because have to return mered listnode
-        ListNode Dummyhead=new ListNode();
-        ListNode temp=Dummyhead;// copying head
+       ListNode dummy=new ListNode();// created new 
+        ListNode temp=dummy;
         while(list1!=null && list2!=null){
-            if(list1.val > list2.val){//which is less that copy to temp head
+            if(list1.val>list2.val){
                 temp.next=list2;
                 list2=list2.next;
                 temp=temp.next;
@@ -25,7 +24,7 @@ class Solution {
                 temp=temp.next;
             }
         }
-        temp.next=(list1!=null)?list1:list2;// if any one is left out diffrent length of list the n add
-        return Dummyhead.next;
+        temp.next=(list1!=null)?list1:list2;
+        return dummy.next;
     }
 }
