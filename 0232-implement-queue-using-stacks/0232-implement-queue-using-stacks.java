@@ -1,7 +1,6 @@
 class MyQueue {
     Stack<Integer> s1=new Stack<>();
     Stack<Integer> s2=new Stack<>();
-    
     public MyQueue() {
         
     }
@@ -22,7 +21,7 @@ class MyQueue {
     }
     
     public int peek() {
-        if(!s2.empty()){
+          if(!s2.empty()){
             return s2.peek();
         }else{
             while(!s1.empty()){
