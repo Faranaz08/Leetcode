@@ -1,28 +1,26 @@
 class MinStack {
-   ArrayList<Integer> lst=new ArrayList<>();
+    ArrayList<Integer> st=new ArrayList<>(); 
     int ptr=-1;
     public MinStack() {
         
-            
-            
     }
     
     public void push(int val) {
-        lst.add(val);
+        st.add(val);
         ptr++;
     }
     
     public void pop() {
-        lst.remove(ptr);
+        st.remove(ptr);
         ptr--;
     }
     
     public int top() {
-        return lst.get(ptr);
+        return st.get(ptr);
     }
     
     public int getMin() {
-        return Collections.min(lst);
+       return Collections.min(st);
     }
 }
 
