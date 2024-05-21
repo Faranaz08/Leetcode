@@ -1,6 +1,6 @@
 class MyCircularQueue {
     protected int[] data;
-    protected int e=0,f=0,size=0,curr=-1;
+    protected int size=0,f=0,e=0,curr=-1;
     public MyCircularQueue(int k) {
         this.data=new int[k];
     }
@@ -15,6 +15,7 @@ class MyCircularQueue {
         curr++;
         curr=curr%data.length;
         return true;
+        
     }
     
     public boolean deQueue() {
@@ -22,26 +23,26 @@ class MyCircularQueue {
             return false;
         }
         f++;
-        f=f%data.length;
+         f=f%data.length;
         size--;
+       
         curr=curr%data.length;
         return true;
+        
     }
     
     public int Front() {
         if(isEmpty()){
             return -1;
         }
-        int r=data[f];
-        return r;
+        return data[f];
     }
     
     public int Rear() {
         if(isEmpty()){
             return -1;
         }
-        int r=data[curr];
-        return r;
+        return data[curr];
     }
     
     public boolean isEmpty() {
@@ -49,7 +50,7 @@ class MyCircularQueue {
     }
     
     public boolean isFull() {
-        return size==data.length;
+        return data.length==size;
     }
 }
 
