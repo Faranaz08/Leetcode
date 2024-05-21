@@ -19,7 +19,7 @@ public class Solution {
         HashSet<ListNode> st=new HashSet<>();
         while(a!=null){
             st.add(a);
-           a= a.next;
+            a=a.next;
         }
         while(b!=null){
             if(st.contains(b)){
