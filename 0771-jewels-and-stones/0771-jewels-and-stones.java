@@ -1,38 +1,15 @@
 class Solution {
-    public int numJewelsInStones(String jewels, String stones) {
-         HashMap<Character,Integer> mp=new HashMap<>();
-         //a,1 A,1 A,2
-        //frequency counting done
-//          for(int i=0;i<stones.length();i++){//3
-//              if(mp.containsKey(stones.charAt(i))){//A
-//                  mp.put(stones.charAt(i),mp.get(stones.charAt(i))+1);//A,
-//              }else{
-//                  mp.put(stones.charAt(i),1);//a,1 A,1
-//              }
-//          }
-        
-//          int sum=0;
-        
-//          for(int i=0;i<jewels.length();i++){
-//              if(mp.containsKey(jewels.charAt(i))){
-//                  sum=sum+mp.get(jewels.charAt(i));
-//              }
-//          }
-//          //character
-//          return sum;
-        
-       //
-        
-     HashSet<Character> set=new HashSet<>();
-        for(char c:jewels.toCharArray()){
-            set.add(c);
+    public int numJewelsInStones(String j, String s) {
+        HashSet<Character> hs=new HashSet<>();
+        for(int i=0;i<j.length();i++){
+            hs.add(j.charAt(i));
         }
-        int count=0;
-        for(char s:stones.toCharArray()){
-            if(set.contains(s)){
-                count++;
+        int c=0;
+        for(int i=0;i<s.length();i++){
+            if(hs.contains(s.charAt(i))){
+                c++;
             }
         }
-return count;
+        return c;
     }
 }
