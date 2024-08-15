@@ -1,26 +1,16 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        //2 for loop approach 
-       // for(int i=0;i<nums.length;i++){
-       //     for(int j=0;j<nums.length;j++){
-       //         if(nums[i]+nums[j]==target && i!=j){
-       //             return new int[]{i,j};
-       //         }
-       //     }
-       // }
-       //  return new int[]{-1,-1};
-        
-        // HashMap 
-        HashMap<Integer,Integer> map=new HashMap<>();
+        //Brut force apporach
+        int[] ind=new int[2];
+        int sum=0;
         for(int i=0;i<nums.length;i++){
-            map.put(nums[i],i);
-        }
-        for(int j=0;j<nums.length;j++){
-            int comp=target-nums[j];
-            if(map.containsKey(comp) && j!=map.get(comp)){
-                return new int[]{j,map.get(comp)};
+            for(int j=i;j<nums.length;j++){
+                if(nums[i]+nums[j]==target && i!=j){
+                    ind[0]=i;
+                    ind[1]=j;
+                }
             }
         }
-        return new int[]{-1,-1};
+        return ind;
     }
 }
