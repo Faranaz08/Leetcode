@@ -4,10 +4,10 @@ class Solution {
         int j=0;
         for(int i:pushed){
             st.push(i);
-            while(!st.empty() && popped[j]==st.peek() && j<popped.length ){
-                st.pop();
-                j++;
-            }
+                while(!st.empty() && popped[j] == st.peek() && j<popped.length ){
+                    st.pop();
+                    j++;
+                }
         }
         return st.empty();
     }
