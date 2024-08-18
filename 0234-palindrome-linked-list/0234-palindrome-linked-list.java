@@ -9,33 +9,43 @@
  * }
  */
 class Solution {
-    public boolean isPalindrome(ListNode head) {//1221 first mid then reverse then check 
-        if(head==null && head.next==null){
+    public boolean isPalindrome(ListNode head) {
+        if(head==null || head.next==null){
             return true;
-        
         }
-        ListNode slow=head,fast=head;// mid
+        
+        // finding middle of the linkledlist
+        ListNode slow=head;
+        ListNode fast=head;
         while(fast.next!=null && fast.next.next!=null){
             slow=slow.next;
             fast=fast.next.next;
         }
-        ListNode newhead=reverse(slow.next);
         
-        //check valus
-        ListNode firsthead=head,sechead=newhead;
-        while(sechead!=null){
-            if(firsthead.val!=sechead.val){
-                reverse(newhead);
+        //reverse the second half 
+        ListNode newHead=reverse(slow.next);
+        
+        //compare first and second half
+        ListNode firstHead=head;
+        ListNode secondHead=newHead;
+        while(secondHead!=null){
+            if(firstHead.val!=secondHead.val){
+                reverse(newHead);
                 return false;
             }
-            sechead=sechead.next;
-            firsthead=firsthead.next;
+            firstHead=firstHead.next;
+            secondHead=secondHead.next;
         }
-        reverse(newhead);
+        reverse(newHead);
         return true;
     }
-    public ListNode reverse(ListNode head){//FCP
-        ListNode front=head,curr=head,prev=null;
+    private ListNode reverse(ListNode head){
+        if(head==null || head.next==null){
+            return head;
+        }
+        ListNode prev=null;
+        ListNode curr=head;
+        ListNode front=head;
         while(curr!=null){
             front=curr.next;
             curr.next=prev;
