@@ -1,11 +1,16 @@
-import java.util.*;
 class Solution {
-    public int mostWordsFound(String[] s) {
+    public int mostWordsFound(String[] sentences) {
+        int count=0;
         int max=0;
-        
-        for(String ss:s){
-           max=Math.max(max,(ss.split(" ")).length);
-           
+        for(int i=0;i<sentences.length;i++){
+            count=0;
+            String[] str=sentences[i].split(" ");
+            for(String j:str){
+                count++;
+            }
+            if(count>max){
+                max=count;
+            }
         }
         return max;
     }
