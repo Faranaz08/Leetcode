@@ -25,6 +25,7 @@ public class Solution {
             if(set.contains(b)){
                 return b;
             }
+            
             b=b.next;
         }
         return null;
