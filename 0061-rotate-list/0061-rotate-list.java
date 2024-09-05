@@ -10,27 +10,29 @@
  */
 class Solution {
     public ListNode rotateRight(ListNode head, int k) {
-      if(k<=0 || head==null || head.next==null){
-          return head;
-      }
-        // find the length
-        int c=1;
+        //
+        if(k<=0 || head==null || head.next==null){
+            return head;
+        }
+        //length
         ListNode last=head;
+        int length=1;
         while(last.next!=null){
             last=last.next;
-            c++;
+            length++;
         }
-        //asign head
+        //assign head
         last.next=head;
-        // now traversse till l-k
-        for(int i=0;i<c-(k%c);i++){
+        
+        //now traverse till l-k
+        for(int i=0;i<length-(k%length);i++){
             last=last.next;
         }
+        
         head=last.next;
+        //breaking circular link
         last.next=null;
         return head;
         
-        
-       
     }
 }
