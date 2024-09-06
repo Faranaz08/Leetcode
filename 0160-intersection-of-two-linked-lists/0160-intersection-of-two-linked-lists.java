@@ -11,7 +11,7 @@
  */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if(headA==null || headB==null){
+        if(headA==null && headB==null){
             return null;
         }
         ListNode a=headA;
@@ -25,7 +25,7 @@ public class Solution {
             if(set.contains(b)){
                 return b;
             }
-            
+            set.add(b);
             b=b.next;
         }
         return null;
