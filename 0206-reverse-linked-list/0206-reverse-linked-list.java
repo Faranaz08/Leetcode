@@ -8,12 +8,12 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-//pcf
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode front=head;
         ListNode curr=head;
+        ListNode front=head;
         ListNode prev=null;
+        //pcf
         while(curr!=null){
             front=curr.next;
             curr.next=prev;
