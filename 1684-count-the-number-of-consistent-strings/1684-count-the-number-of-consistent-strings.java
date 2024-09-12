@@ -1,16 +1,14 @@
 class Solution {
     public int countConsistentStrings(String allowed, String[] words) {
-        int count=0;
-        boolean[] boo=new boolean[26];
+        HashSet<Character> set=new HashSet<>();
         for(char c:allowed.toCharArray()){
-            boo[c-'a']=true;
+            set.add(c);
         }
-        
-        for(int i=0;i<words.length;i++){
+        int count=0;
+        for(String word:words){
             boolean cons=true;
-            for(char o:words[i].toCharArray()){
-                
-                if(!boo[o-'a']){
+            for(char c:word.toCharArray()){
+                if(!set.contains(c)){
                     cons=false;
                     break;
                 }
